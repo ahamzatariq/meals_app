@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+      return Center(
       child: Text('Hi Im my favorite'),
     );
   }
