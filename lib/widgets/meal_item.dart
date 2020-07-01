@@ -143,9 +143,6 @@ class MealItem extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       affordabilityText,
-                      SizedBox(
-                        width: 6,
-                      ),
                     ],
                   ),
                 ],
