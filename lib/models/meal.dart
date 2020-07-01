@@ -1,8 +1,16 @@
-import 'package:flutter/cupertino.dart';
-import 'package:meals_app/models/category.dart';
+import 'package:flutter/foundation.dart';
 
-enum Complexity { Simple, Challenging, Hard }
-enum Affordability { Affordable, Pricey, Luxurious }
+enum Complexity {
+  Simple,
+  Challenging,
+  Hard,
+}
+
+enum Affordability {
+  Affordable,
+  Pricey,
+  Luxurious,
+}
 
 class Meal {
   final String id;
@@ -19,18 +27,19 @@ class Meal {
   final bool isVegan;
   final bool isVegetarian;
 
-  const Meal(
-      {@required this.id,
-      @required this.categories,
-      @required this.title,
-      @required this.imageUrl,
-      @required this.ingredients,
-      @required this.steps,
-      @required this.duration,
-      @required this.complexity,
-      @required this.affordability,
-      @required this.isGlutenFree,
-      @required this.isLactoseFree,
-      @required this.isVegan,
-      @required this.isVegetarian});
+  const Meal({
+    @required this.id,
+    @required this.categories,
+    @required this.title,
+    @required this.imageUrl,
+    @required this.ingredients,
+    @required this.steps,
+    @required this.duration,
+    @required this.complexity,
+    @required this.affordability,
+    @required this.isGlutenFree,
+    @required this.isLactoseFree,
+    @required this.isVegan,
+    @required this.isVegetarian,
+  });
 }
