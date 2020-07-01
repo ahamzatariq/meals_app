@@ -16,6 +16,58 @@ class MealItem extends StatelessWidget {
       @required this.complexity,
       @required this.affordability});
 
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Simple:
+        return 'Simple';
+        break;
+
+      case Complexity.Challenging:
+        return 'Challenging';
+        break;
+
+      case Complexity.Hard:
+        return 'Hard';
+        break;
+
+      default:
+        return 'Unknown';
+    }
+  }
+
+  Widget get affordabilityText{
+    switch (affordability) {
+      case Affordability.Affordable:
+        return Row(
+          children: <Widget>[
+            Icon(Icons.attach_money)
+          ],
+        );
+        break;
+
+      case Affordability.Pricey:
+        return Row(
+          children: <Widget>[
+            Icon(Icons.attach_money),
+            Icon(Icons.attach_money)
+
+          ],
+        );
+        break;
+
+      case Affordability.Luxurious:
+        return Row(
+          children: <Widget>[
+            Icon(Icons.attach_money),
+            Icon(Icons.attach_money),
+            Icon(Icons.attach_money)
+          ],
+        );
+        break;
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -30,7 +82,7 @@ class MealItem extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                ClipRRect( 
+                ClipRRect(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
@@ -41,9 +93,61 @@ class MealItem extends StatelessWidget {
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
+                ),
+                Positioned(
+                  bottom: 20,
+                  right: 10,
+                  child: Container(
+                    width: 220,
+                    color: Colors.black54,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 20,
+                    ),
+                    child: Text(
+                      title,
+                      style: TextStyle(fontSize: 26, color: Colors.white),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
                 )
               ],
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.schedule),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text('$duration'),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.work),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text('$complexityText'),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      affordabilityText,
+                      SizedBox(
+                        width: 6,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
