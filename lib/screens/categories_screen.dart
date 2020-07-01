@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meals_app/category_item.dart';
+import 'file:///C:/Users/Hamza/AndroidStudioProjects/FlutterProjects/meals_app/lib/widgets/category_item.dart';
 import 'package:meals_app/dummy_data.dart.dart';
 
 class CategoriesScreen extends StatelessWidget {
