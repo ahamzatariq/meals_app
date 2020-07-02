@@ -2,7 +2,7 @@
 
 The flutter application shows a list of meals and contains multiple screens, navigations and filters that help with displaying the right meals. 
 
-Screenshots: 
+Screenshots <br>
 <a href="https://postimg.cc/V0jP7L2m" target="_blank"><img src="https://i.postimg.cc/V0jP7L2m/Screenshot-20200702-231801.png" alt="Screenshot-20200702-231801"/></a><br/><br/>
 <a href="https://postimg.cc/Yjg72b0Z" target="_blank"><img src="https://i.postimg.cc/Yjg72b0Z/Screenshot-20200702-231808.png" alt="Screenshot-20200702-231808"/></a><br/><br/>
 <a href="https://postimg.cc/HrSDvNvc" target="_blank"><img src="https://i.postimg.cc/HrSDvNvc/Screenshot-20200702-231826.png" alt="Screenshot-20200702-231826"/></a><br/><br/>
