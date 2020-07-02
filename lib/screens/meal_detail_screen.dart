@@ -3,6 +3,10 @@ import '../dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
+  final Function toggleFavorite;
+  final Function isFavorite;
+
+  MealDetailScreen(this.toggleFavorite, this.isFavorite);
 
   Widget buildSectionTitle(BuildContext context, String title) {
     return Container(
@@ -38,56 +42,60 @@ class MealDetailScreen extends StatelessWidget {
 //        }
         );
     return Scaffold(
-        appBar: AppBar(
-          title: Text('${selectedMeal.title}'),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 300,
-                width: double.infinity,
-                child: Image.network(
-                  selectedMeal.imageUrl,
-                  fit: BoxFit.cover,
-                ),
+      appBar: AppBar(
+        title: Text('${selectedMeal.title}'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                selectedMeal.imageUrl,
+                fit: BoxFit.cover,
               ),
-              buildSectionTitle(context, 'Ingredients'),
-              buildContainer(
-                ListView.builder(
-                  itemBuilder: (context, index) => Card(
-                    color: Theme.of(context).accentColor,
-                    child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        child: Text(selectedMeal.ingredients[index])),
-                  ),
-                  itemCount: selectedMeal.ingredients.length,
+            ),
+            buildSectionTitle(context, 'Ingredients'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (context, index) => Card(
+                  color: Theme.of(context).accentColor,
+                  child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      child: Text(selectedMeal.ingredients[index])),
                 ),
+                itemCount: selectedMeal.ingredients.length,
               ),
-              buildSectionTitle(context, 'Steps'),
-              buildContainer(
-                ListView.builder(
-                  itemBuilder: (context, index) => Column(
-                    children: <Widget>[
-                      ListTile(
-                        leading: CircleAvatar(
-                          child: Text('# ${(index+1)}'),
-                        ),
-                        title: Text(selectedMeal.steps[index]),
+            ),
+            buildSectionTitle(context, 'Steps'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (context, index) => Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Text('# ${(index + 1)}'),
                       ),
-                      Divider(color: Colors.black54,)
-                    ],
-                  ),
-                  itemCount: selectedMeal.steps.length,
+                      title: Text(selectedMeal.steps[index]),
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
+                itemCount: selectedMeal.steps.length,
+              ),
+            )
+          ],
         ),
+      ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
-        onPressed: (){ Navigator.of(context).pop(mealId);},
+        child: Icon(isFavorite(mealId) ? Icons.star : Icons.star_border),
+        onPressed: () {
+          toggleFavorite(mealId);
+        },
       ),
     );
   }
